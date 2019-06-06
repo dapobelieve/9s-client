@@ -1,4 +1,4 @@
-# 9SClient
+# 9jaStreamClient
 
 ## Project setup
 ```
