@@ -1,25 +1,26 @@
 <template>
-  <div>
-    <nav class="flex justify-between">
-      <p class="uppercase text-3xl p-4">
-        <span class="font-thin">9JA</span>
-        <span class="font-black">STREAM</span>
-      </p>
-      <ul class="flex m-4">
-        <li class="p-4">About</li>
-        <li class="p-4">Events</li>
-        <li class="p-4">Contacts</li>
-      </ul>
-    </nav>
-    <hr class="stroke-current">
-    <nav class="flex justify-between">
-      <p class="p-2 text-sm opacity-50 font-normal">Copyright 2019. All rights reserved</p>
-      <ul class="flex">
-        <li class="p-2"><i class="fab fa-facebook fa-2x"></i></li>
-        <li class="p-2"><i class="fab fa-twitter-square fa-2x"></i></li>
-        <li class="p-2"><i class="fab fa-instagram fa-2x"></i></li>
-      </ul>
-    </nav>
+  <div class="bg-white">
+    <div class="mx-16 py-8">
+      <div class="flex justify-between border-b border-gray-300 pb-2">
+        <div class="uppercase text-3xl items-center">
+          <span class="font-thin tracking-tighter">9JA</span>
+          <span class="font-black tracking-tighter">STREAM</span>
+        </div>
+        <div class="flex justify-between">
+          <div class="cursor-pointer">About</div>
+          <div class="cursor-pointer ml-6">Events</div>
+          <div class="cursor-pointer ml-6">Contacts</div>
+        </div>
+      </div>
+      <div class="flex mt-4 justify-between items-center">
+        <div>Copyright 2019. All rights reserved</div>
+        <div class="flex justify-between">
+          <span class=""><i class="fab fa-facebook fa-2x"></i></span>
+          <span class="ml-3"><i class="fab fa-twitter-square fa-2x"></i></span>
+          <span class="ml-3"><i class="fab fa-instagram fa-2x"></i></span>
+        </div>
+      </div>    
+    </div>
   </div>
 </template>
 

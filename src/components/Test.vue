@@ -552,7 +552,7 @@
                     </div>
                 </div>
             </div>
-            <div class="flex flex-wrap -mx-4">
+            <div class="flex flex-wrap -mx-1">
                 <div class="w-1/2 px-4">
                     <div class="bg-white rounded shadow border">
                         <div class="flex border-b justify-between px-6 items-center -mb-px">
