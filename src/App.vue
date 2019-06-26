@@ -1,8 +1,21 @@
 <template>
   <div id="app">
+    <RegModal/>
     <router-view/>
   </div>
 </template>
+<script>
+  import Bus from './helpers/bus'
+  import RegModal from './components/registerModal.vue'
+  export default {
+    components: {
+      RegModal
+    },
+    mounted() {
+      
+    }
+  }
+</script>
 
 <style>
 #app {
