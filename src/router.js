@@ -1,22 +1,31 @@
 import Vue from 'vue';
 import Router from 'vue-router';
 import Home from './views/Home.vue';
-import Test from './components/Test.vue';
+import {
+  AdminIndex,
+  AdminHome
+} from './admin'
 
 Vue.use(Router);
 
-export default new Router({
-  routes: [
+const routes =  [
     {
       path: '/',
       name: 'home',
       component: Home,
     },
     {
-      path: '/test',
-      name: 'test',
-      component: Test,
-    },
+      path: '/admin',
+      component: AdminIndex,
+      children: [
+        {
+          path: 'home',
+          name: 'admin-home',
+          component: AdminHome
+        }
+        // add other admin routes here
+      ]
+    }
     // {
     //   path: '/about',
     //   name: 'about',
@@ -25,5 +34,12 @@ export default new Router({
     //   // which is lazy-loaded when the route is visited.
     //   component: () => import(/* webpackChunkName: "about" */ './views/About.vue'),
     // },
-  ],
+];
+
+const router =  new Router({
+  routes
 });
+
+// do any beforeEach here
+
+export default router
