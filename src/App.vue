@@ -1,18 +1,25 @@
 <template>
   <div id="app">
-    <RegModal/>
+    <RegModal v-if="registerState"/>
     <router-view/>
   </div>
 </template>
 <script>
-  import Bus from './helpers/bus'
+  import Bus from './helpers/bus.js'
   import RegModal from './components/registerModal.vue'
   export default {
+    data () {
+      return {
+        registerState: false
+      }
+    },
     components: {
       RegModal
     },
     mounted() {
-      
+      Bus.$on('register.trigger', (state) => {
+        this.registerState = state;
+      })
     }
   }
 </script>
