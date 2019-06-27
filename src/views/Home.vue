@@ -12,8 +12,8 @@
       </nav>
 
       <div class="flex flex-wrap">
-        <div v-for="x in 5" class="w-1/4 px-3 mt-6">
-            <div @click.prevent="trigger(true)" class="bg-white shadow rounded cursor-pointer">
+        <div v-for="x in 5" :key="x" class="w-full md:w-1/4 px-3 mt-6">
+          <div class="bg-white shadow rounded cursor-pointer">
               <img class="" src="https://res.cloudinary.com/invitro/image/upload/v1561296154/9jastream/hx3b190wbxh62fq2bnir.jpg">              
               <div class="py-4">
                 <span class="font-bold text-black flex text-xl justify-start ml-4">Simi London Concert</span>
