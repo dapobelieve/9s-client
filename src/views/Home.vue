@@ -6,14 +6,14 @@
       <nav class="flex items-start border-b border-gray-400 mb-4">
         <div class="flex justify-between -mb-px ">
           <a href="#" class="px-3 pb-2 text-green-500 font-semibold tracking-normal border-b-2 border-green-700">Live Events</a>
-          <a @click.prevent="trigger(true)" href="#" class="px-3 pb-2 text-gray-500 ml-6 border-b border-gray-400 tracking-normal font-semibold hover:border-green-700 hover:text-green-500">Upcoming</a>
+          <a  href="#" class="px-3 pb-2 text-gray-500 ml-6 border-b border-gray-400 tracking-normal font-semibold hover:border-green-700 hover:text-green-500">Upcoming</a>
           <a href="#" class="px-3 pb-2 text-gray-500 border-gray-400 ml-6 border-b tracking-normal font-semibold hover:border-green-700 hover:text-green-500">Past Events</a>
         </div>
       </nav>
 
       <div class="flex flex-wrap">
         <div v-for="x in 5" class="w-1/4 px-3 mt-6">
-          <div class="bg-white shadow rounded cursor-pointer">
+            <div @click.prevent="trigger(true)" class="bg-white shadow rounded cursor-pointer">
               <img class="" src="https://res.cloudinary.com/invitro/image/upload/v1561296154/9jastream/hx3b190wbxh62fq2bnir.jpg">              
               <div class="py-4">
                 <span class="font-bold text-black flex text-xl justify-start ml-4">Simi London Concert</span>
@@ -43,6 +43,10 @@ export default {
   methods: {
     trigger(state) {
       Bus.$emit('register.trigger', state)
+    },
+    getEvents()
+    {
+      // axios.get()
     }
   }
 };
