@@ -20,21 +20,8 @@
         </button>
       </div>
       <div class="w-full block flex-grow md:flex md:items-center md:w-auto">
-        <div class="text-sm md:flex-grow">
-          <!-- <a
-            href="#responsive-header"
-            class="block mt-4 lg:inline-block lg:mt-0 text-teal-200 hover:text-white mr-4"
-          >Docs</a>
-          <a
-            href="#responsive-header"
-            class="block mt-4 lg:inline-block lg:mt-0 text-teal-200 hover:text-white mr-4"
-          >Hello</a>
-          <a
-            href="#responsive-header"
-            class="block mt-4 lg:inline-block lg:mt-0 text-teal-200 hover:text-white"
-          >Blog</a>-->
-        </div>
-        <div>
+        <div class="text-sm md:flex-grow"></div>
+        <div v-if="!authenticated">
           <router-link to="login">
             <button
               class="bg-green-500 text-white font-bold py-2 px-4 mx-2 focus:outline-none rounded"
@@ -46,13 +33,48 @@
             >Register</button>
           </router-link>
         </div>
+        <div v-if="authenticated">
+          <button
+            class="text-white font-bold py-2 px-4 mx-2 focus:outline-none rounded"
+          >Welcome {{user.name}}</button>
+          <button
+            class="bg-transparent-500 py-2 px-4 text-white border mx-2 hover:bg-white hover:text-green-500 border-solid border-white-800 font-bold py-2 px-4 rounded"
+            @click="logout() "
+          >Log Out</button>
+        </div>
       </div>
     </nav>
   </div>
 </template>
 
 <script>
-export default {};
+export default {
+  mounted() {
+    let user = localStorage.getItem("9S-User");
+    let token = localStorage.getItem("9S-token");
+
+    if (user && token) {
+      this.authenticated = true;
+      this.user = user;
+      console.log(JSON.parse(user));
+      this.token = token;
+    }
+  },
+  data() {
+    return {
+      user: {},
+      token: "",
+      authenticated: false
+    };
+  },
+  methods: {
+    logout() {
+      let user = localStorage.removeItem("9S-User");
+      let token = localStorage.removeItem("9S-token");
+      this.authenticated = false;
+    }
+  }
+};
 </script>
 
 <style lang="scss" scoped>
