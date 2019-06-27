@@ -3,7 +3,7 @@ import Router from 'vue-router';
 import Home from './views/Home.vue';
 import Login from './views/Login.vue';
 import Register from './views/Register.vue';
-import Test from './components/Test.vue';
+// import Test from './components/Test.vue';
 import { AdminIndex, AdminHome } from './admin';
 
 Vue.use(Router);
@@ -14,11 +14,11 @@ const routes = [
     name: 'home',
     component: Home,
   },
-  {
-    path: '/test',
-    name: 'test',
-    component: Test,
-  },
+  // {
+  //   path: '/test',
+  //   name: 'test',
+  //   component: Test,
+  // },
   {
     path: '/login',
     name: 'login',

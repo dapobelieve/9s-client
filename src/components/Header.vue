@@ -56,7 +56,7 @@ export default {
     if (user && token) {
       this.authenticated = true;
       this.user = user;
-      console.log(JSON.parse(user));
+      // console.log(JSON.parse(user));
       this.token = token;
     }
   },

@@ -131,7 +131,7 @@ export default {
         })
         .catch(function(error) {
           self.loading = false;
-          console.log(error);
+          console.log(error.response.data);
         });
     }
   }
