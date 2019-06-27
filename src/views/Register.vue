@@ -14,8 +14,10 @@
       <div class="block">
         <form class="w-full">
           <div class="uppercase text-3xl items-center">
-            <span class="font-thin tracking-tighter">9JA</span>
-            <span class="font-black tracking-tighter">STREAM</span>
+            <router-link class="hover:underline" to="/">
+              <span class="font-thin tracking-tighter">9JA</span>
+              <span class="font-black tracking-tighter">STREAM</span>
+            </router-link>
           </div>
           <p class="text-green-500 font-bold text-xl text-center mb-10">Create an account</p>
           <ErrorAlert v-if="error" :error_msg="error_msg" class="mb-4"></ErrorAlert>
@@ -101,7 +103,10 @@
                 type="button"
                 @click="register() "
               >Sign Up</button>
-              <p>Already have an account? Sign in</p>
+              <p>
+                Already have an account?
+                <router-link class="underline" to="/login">Sign In</router-link>
+              </p>
             </div>
           </div>
         </form>
@@ -158,12 +163,12 @@ export default {
           self.loading = false;
           if (response.status == "200" || response.status == "201") {
             console.log(response.data);
-             localStorage.setItem("9S-User", response.data.user);
-             localStorage.setItem("9S-token", response.data.token);
-            self.$router.push("/")
+            localStorage.setItem("9S-User", response.data.user);
+            localStorage.setItem("9S-token", response.data.token);
+            self.$router.push("/");
           } else {
             self.error = true;
-            self.error_msg = "An error occured"
+            self.error_msg = "An error occured";
             // Dsiplay
             console.log(response);
           }
