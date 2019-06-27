@@ -2,7 +2,7 @@
   <div class="flex justify-center items-center">
     <div class="log bg-green-700 md:w-2/5 md:flex hidden  p-4 items-center justify-center">
       <div class="block">
-        <img class="my-img" src="../assets/img/auth.svg">
+        <img class="my-img" src="../assets/img/auth2.svg">
         <p class="text-white font-bold text-xl">Let’s get you logged in</p>
         <p class="text-white font-bold">
           It should only take a couple of secounds
@@ -77,8 +77,8 @@ export default {};
 }
 
 .my-img {
-  width: 60%;
-  height: 60%;
+  width: 30%;
+  height: 30%;
   margin: auto;
 }
 </style>
