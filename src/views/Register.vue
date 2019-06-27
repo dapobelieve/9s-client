@@ -162,19 +162,12 @@ export default {
 
       axios
         .post("http://134.209.24.105/api/register", this.data)
-        .then(function(response) {
-          self.loading = false;
-          if (response.status == "200" || response.status == "201") {
-            console.log(response.data);
-            localStorage.setItem("9S-User", response.data.user);
-            localStorage.setItem("9S-token", response.data.token);
-            self.$router.push("/");
-          } else {
-            self.error = true;
-            self.error_msg = "An error occured";
-            // Dsiplay
-            console.log(response);
-          }
+        .then((response) => {
+          this.loading = false;
+          // we may not need to do this if check if it gets here its successful
+          localStorage.setItem("9S-User", response.data.user);
+          localStorage.setItem("9S-token", response.data.token);
+          this.$router.replace("/");
         })
         .catch((error) => {
           self.loading = false;
