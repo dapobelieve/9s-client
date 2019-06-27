@@ -2,7 +2,7 @@
   <div class="flex mb-4">
     <div class="w-full p-2 text-center">
       <img
-        class="object-contain h-64 w-full"
+        class="object-contain m-auto h-64 w-full"
         src="https://res.cloudinary.com/dldd8ucby/image/upload/v1561331855/Bitmap_1.png"
         alt="Event"
       >
