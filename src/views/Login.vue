@@ -125,12 +125,12 @@ export default {
           } else {
             self.error = true;
             self.error_msg = "An error occured";
-            // Dsiplay
-            console.log(response);
           }
         })
         .catch(function(error) {
           self.loading = false;
+          self.error = true;
+          self.error_msg = error.response.data.error;
           console.log(error.response.data);
         });
     }
