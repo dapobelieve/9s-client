@@ -35,8 +35,13 @@
         </div>
         <div v-if="authenticated">
           <button
-            class="text-white font-bold py-2 px-4 mx-2 focus:outline-none rounded"
+            class="text-white font-bold block md:inline py-2 px-4 mx-2 focus:outline-none rounded"
           >Welcome {{user.name}}</button>
+          <router-link to="admin" v-if="user.roles">
+            <button
+              class="bg-green-500 text-white font-bold py-2 px-4 mx-2 focus:outline-none rounded"
+            >Admin Portal</button>
+          </router-link>
           <button
             class="bg-transparent-500 py-2 px-4 text-white border mx-2 hover:bg-white hover:text-green-500 border-solid border-white-800 font-bold py-2 px-4 rounded"
             @click="logout() "
@@ -48,15 +53,16 @@
 </template>
 
 <script>
+import { join } from "path";
 export default {
   mounted() {
     let user = localStorage.getItem("9S-User");
     let token = localStorage.getItem("9S-token");
+    user = JSON.parse(user);
 
     if (user && token) {
       this.authenticated = true;
       this.user = user;
-      // console.log(JSON.parse(user));
       this.token = token;
     }
   },

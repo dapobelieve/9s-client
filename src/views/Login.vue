@@ -94,8 +94,33 @@ export default {
     ErrorAlert
   },
   methods: {
+    getRole(token) {
+      const self = this;
+      const options = {
+        headers: {
+          "Content-Type": "application/json",
+          Authorization: `Bearer ${token}`
+        }
+      };
+      axios
+        .get("http://134.209.24.105/api/v1/user", options)
+        .then(function(response) {
+          if (response.status == "200" || response.status == "201") {
+            console.log(response.data.data.email)
+            let user = response.data.data;
+            console.log(user)
+            localStorage.setItem("9S-User", JSON.stringify(user));
+            self.$router.push("/");
+          } else {
+            self.error = true;
+            self.error_msg = "An error occured";
+          }
+        })
+        .catch(function(error) {
+          console.log(error);
+        });
+    },
     login() {
-      console.log("ndjndjfn");
       this.error = false;
       this.error_msg = "";
       if (this.data.email == "") {
@@ -118,20 +143,20 @@ export default {
         .then(function(response) {
           self.loading = false;
           if (response.status == "200" || response.status == "201") {
-            console.log(response.data);
-            localStorage.setItem("9S-User", response.data.user);
+            console.log(response.data.token);
             localStorage.setItem("9S-token", response.data.token);
-            self.$router.push("/");
+            self.getRole(response.data.token);
           } else {
             self.error = true;
             self.error_msg = "An error occured";
           }
         })
         .catch(function(error) {
+          console.log("jjhbhb")
           self.loading = false;
           self.error = true;
           self.error_msg = error.response.data.error;
-          console.log(error.response.data);
+          console.log(error);
         });
     }
   }

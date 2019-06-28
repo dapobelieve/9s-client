@@ -3,6 +3,7 @@ import Router from 'vue-router';
 import Home from './views/Home.vue';
 import Login from './views/Login.vue';
 import Register from './views/Register.vue';
+import AddEvent from './admin/parts/AddEvent';
 // import Test from './components/Test.vue';
 import { AdminIndex, AdminHome } from './admin';
 
@@ -37,6 +38,11 @@ const routes = [
         path: 'home',
         name: 'admin-home',
         component: AdminHome,
+      },
+      {
+        path: '/add-event',
+        name: 'add-event',
+        component: AddEvent,
       },
       // add other admin routes here
     ],
