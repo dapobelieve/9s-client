@@ -6,15 +6,15 @@
           <span class="font-thin tracking-tighter">9JA</span>
           <span class="font-black tracking-tighter">STREAM</span>
         </div>
-        <div class="block text-center md:flex jmd:ustify-between">
+        <div class="flex text-center justify-between">
           <div class="cursor-pointer ml-6">About</div>
           <div class="cursor-pointer ml-6">Events</div>
           <div class="cursor-pointer ml-6">Contacts</div>
         </div>
       </div>
-      <div class="block md:flex mt-4 justify-between items-center">
+      <div class="sm:flex md:flex mt-4 justify-between items-center">
         <div>Copyright 2019. All rights reserved</div>
-        <div class="block md:flex mt-2 justify-between">
+        <div class="sm:flex md:flex mt-2 justify-between">
           <span class=""><i class="fab fa-facebook fa-2x"></i></span>
           <span class="ml-3"><i class="fab fa-twitter-square fa-2x"></i></span>
           <span class="ml-3"><i class="fab fa-instagram fa-2x"></i></span>

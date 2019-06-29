@@ -10,7 +10,70 @@
     mounted() {
       this.$refs.register.open()
     },
+    computed: {
+      scriptLoaded () {
+        return new Promise((resolve) => {
+          this.loadScript(() => {
+              resolve();
+          })
+        })
+      },
+    },
     methods: {
+      close (){
+        alert("INCOMPLETE PAYMENT!!!");
+      },
+      loadScript(callback) {
+        // load paystack's inline js script
+        const script = document.createElement('script');
+        script.src = 'https://js.paystack.co/v1/inline.js';
+        document.getElementsByTagName('head')[0].appendChild(script);
+        if (script.readyState) {
+            // IE
+            script.onreadystatechange = () => {
+                if (script.readyState === 'loaded' || script.readyState === 'complete') {
+                    script.onreadystatechange = null;
+                    callback()
+                }
+            }
+        } else {
+            // Others
+            script.onload = () => {
+                callback()
+            }
+        }
+      },
+      payWithPaystack() {
+         //only after script has loaded
+        this.scriptLoaded.then(() => {
+          const paystackOptions = {
+              key: this.payObj.psKey,
+              email: 'dapo@gmail.com',
+              amount: this.amount,
+              ref: '07324023hkjlashfbidf',
+              callback: (response) => {
+                  console.log(response.trxref);
+                  this.loadText = 'Verifying your payment';
+
+                  //verify trnsaction from the backend
+                  // this.verifyTransaction(response.trxref)
+              },
+              onClose: () => {
+                  this.close()
+              },
+              metadata: null,
+              currency: this.currency,
+              // bearer: this.payObj.bearer
+          };
+          if (this.embed) {
+              paystackOptions.container = 'paystackEmbedContainer'
+          }
+          const handler = window.PaystackPop.setup(paystackOptions);
+          if (!this.embed) {
+              handler.openIframe()
+          }
+        })
+      },
       cancel (state) {
         this.$refs.register.close();
         Bus.$emit('register.trigger', state)

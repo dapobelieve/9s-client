@@ -14,7 +14,7 @@
       <div class="block">
         <form class="w-full">
           <div class="uppercase text-3xl items-center">
-            <router-link class="hover:underline" to="/">
+            <router-link class="cursor-pointer no-underline" to="/">
               <span class="font-thin tracking-tighter">9JA</span>
               <span class="font-black tracking-tighter">STREAM</span>
             </router-link>

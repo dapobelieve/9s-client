@@ -17,7 +17,7 @@
   export default {
     props: ['event'],
   mounted () {
-    console.log(event);
+    // console.log(event);
   }
   }
 </script>
