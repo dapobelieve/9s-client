@@ -15,7 +15,12 @@
 </template>
 
 <script>
-export default {};
+  import Bus from "../helpers/bus.js";
+  export default {
+    mounted() {
+      Bus.$emit("register.trigger", true)
+    }
+  };
 </script>
 
 <style scoped>

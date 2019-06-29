@@ -48,7 +48,7 @@
          //only after script has loaded
         this.scriptLoaded.then(() => {
           const paystackOptions = {
-              key: this.payObj.psKey,
+              key: 'pk_test_a2437b036102451657b8bdbb236b93ee7b6c64fd',
               email: 'dapo@gmail.com',
               amount: 5000,
               ref: '07324023hkjlashfbidf',
