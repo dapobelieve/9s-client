@@ -3,6 +3,7 @@ import Router from 'vue-router';
 import Home from './views/Home.vue';
 import Login from './views/Login.vue';
 import Register from './views/Register.vue';
+import SingleEvent from './components/SingleEvent.vue';
 import AddEvent from './admin/parts/AddEvent';
 // import Test from './components/Test.vue';
 import { AdminIndex, AdminHome } from './admin';
@@ -14,6 +15,11 @@ const routes = [
     path: '/',
     name: 'home',
     component: Home,
+  },
+  {
+    path: '/watch/:id',
+    name: 'watch',
+    component: SingleEvent
   },
   // {
   //   path: '/test',

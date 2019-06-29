@@ -8,7 +8,8 @@
   import Bus from '../helpers/bus.js';
   export default {
     mounted() {
-      this.$refs.register.open()
+      this.$refs.register.open();
+      this.payWithPaystack();
     },
     computed: {
       scriptLoaded () {
@@ -49,7 +50,7 @@
           const paystackOptions = {
               key: this.payObj.psKey,
               email: 'dapo@gmail.com',
-              amount: this.amount,
+              amount: 5000,
               ref: '07324023hkjlashfbidf',
               callback: (response) => {
                   console.log(response.trxref);
