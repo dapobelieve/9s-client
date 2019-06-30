@@ -112,6 +112,17 @@ import ErrorAlert from "../../components/ErrorAlert";
 import SuccessAlert from "../../components/SuccessAlert.vue";
 import axios from "axios";
 export default {
+    mounted() {
+    let user = localStorage.getItem("9S-User");
+    let token = localStorage.getItem("9S-token");
+    user = JSON.parse(user);
+
+    if (user && token) {
+      this.authenticated = true;
+      this.user = user;
+      this.token = token;
+    }
+  },
   data() {
     return {
       event: {
@@ -120,6 +131,8 @@ export default {
       loading: false,
       error: false,
       success: false,
+      user: {},
+      token: "",
       error_msg: "",
       errors: {}
     };
@@ -131,9 +144,16 @@ export default {
   },
   methods: {
     onFileSelected(event){
-      console.log(event.target.files[0])
+      this.event = event.target.files[0]
     },
     addEvent() {
+            const options = {
+        headers: {
+          "Content-Type": "multipart/form-data",
+          Authorization: `Bearer ${this.token}`
+        }
+      };
+
       this.error = false;
       this.error_msg = "";
       this.success = false;
@@ -168,11 +188,12 @@ export default {
       fd.append("title", this.event.title);
       fd.append("details", this.event.details);
       fd.append("price", this.event.price);
-      // fd.append("image", this.event.image);
+      fd.append("image", this.event.image);
       fd.append("link", this.event.link);
+      console.log(this.event)
 
       axios
-        .post("http://134.209.24.105/api/events", this.fd)
+        .post("http://134.209.24.105/api/v1/events", fd, options)
         .then(response => {
           self.loading = false;
           self.success = true;
