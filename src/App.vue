@@ -5,23 +5,24 @@
   </div>
 </template>
 <script>
-  import Bus from './helpers/bus.js'
-  import RegModal from './components/registerModal.vue'
-  export default {
-    data () {
-      return {
-        registerState: false
-      }
-    },
-    components: {
-      RegModal
-    },
-    mounted() {
-      Bus.$on('register.trigger', (state) => {
-        this.registerState = state;
-      })
-    }
-  }
+import Bus from './helpers/bus.js';
+import RegModal from './components/registerModal.vue';
+
+export default {
+  data() {
+    return {
+      registerState: false,
+    };
+  },
+  components: {
+    RegModal,
+  },
+  mounted() {
+    Bus.$on('register.trigger', (state) => {
+      this.registerState = state;
+    });
+  },
+};
 </script>
 
 <style>
@@ -29,7 +30,7 @@
   font-family: 'Source Sans Pro', sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  text-align: center;
+  /*text-align: center;*/
   color: #2c3e50;
 }
 

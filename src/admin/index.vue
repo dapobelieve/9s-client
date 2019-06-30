@@ -7,7 +7,7 @@
                 <span class="text-xl pl-2">9JAStream</span>
             </router-link>
         </div>
-        <Search/>      
+        <Search/>
         <TopBar/>
       </div>
     </nav>
@@ -16,29 +16,29 @@
         <SideBar/>
         <div class="main-content flex-1 bg-gray-100 mt-12 mx-auto md:mt-2 pb-24 md:pb-5">
             <router-view></router-view>
-            
+
         </div>
     </div>
   </div>
 </template>
 <script>
-  import SideBar from './parts/sidebar.vue'
-  import Search from './parts/search.vue'
-  import TopBar from './parts/TopBar.vue'
-  export default {
-    components: {
-      SideBar,
-      Search,
-      TopBar
-    },
-    mounted() {
+import SideBar from './parts/sidebar.vue';
+import Search from './parts/search.vue';
+import TopBar from './parts/TopBar.vue';
 
-    },
-    beforeRouteEnter (to, from, next)
-    {
-      // determine if user is and admin by role
-      next();
-      // console.log(from)
-    }
-  }
+export default {
+  components: {
+    SideBar,
+    Search,
+    TopBar,
+  },
+  mounted() {
+
+  },
+  beforeRouteEnter(to, from, next) {
+    // determine if user is and admin by role
+    next();
+    // console.log(from)
+  },
+};
 </script>

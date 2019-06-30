@@ -16,10 +16,10 @@
   </div>
 </template>
 <script>
-  export default {
-    props: ['event'],
-  mounted () {
+export default {
+  props: ['event'],
+  mounted() {
     // console.log(event);
-  }
-  }
+  },
+};
 </script>

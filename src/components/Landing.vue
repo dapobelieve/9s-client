@@ -20,11 +20,12 @@
 </template>
 
 <script>
-import HeaderComponent from "../components/Header";
+import HeaderComponent from './Header';
+
 export default {
   components: {
-    HeaderComponent
-  }
+    HeaderComponent,
+  },
   // mounted
 };
 </script>

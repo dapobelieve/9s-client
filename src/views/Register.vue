@@ -1,20 +1,23 @@
 <template>
   <div class="flex justify-center items-center">
-    <div class="log bg-green-700 md:w-2/5 md:flex hidden p-4 items-center justify-center">
-      <div class="block">
+    <div class="log bg-green-700 md:w-1/2 md:flex hidden p-4 items-center justify-center">
+      <div class="">
         <img class="my-img" src="../assets/img/auth.svg">
-        <p class="text-white font-bold text-xl">Let’s get you set up</p>
-        <p class="text-white font-bold">
-          It should only take a couple of minutes
-          to pair with your watch
-        </p>
+        <div class="flex flex-col justify-center">
+          <div class="text-white font-bold text-xl self-center">Let’s get you set up</div>
+          <p class="text-white font-bold self-center">
+            It should only take a couple of minutes
+            to pair with your watch
+          </p>
+          
+        </div>
       </div>
     </div>
-    <div class="log bg-white md:w-3/5 w-full flex items-center justify-center">
-      <div class="block">
+    <div class="log bg-white md:w-1/2 w-full flex items-center justify-center">
+      <div class="">
         <form class="w-full">
-          <div class="uppercase text-3xl items-center">
-            <router-link class="hover:underline" to="/">
+          <div class="uppercase justify-center text-3xl">
+            <router-link class="hover:underline-none" to="/">
               <span class="font-thin tracking-tighter">9JA</span>
               <span class="font-black tracking-tighter">STREAM</span>
             </router-link>
@@ -31,7 +34,7 @@
             <div class="md:w-2/3">
               <input
                 class="bg-gray-200 appearance-none border-2 border-gray-200 rounded w-full py-2 px-4 text-gray-700 leading-tight focus:outline-none focus:bg-white focus:border-purple-500"
-                
+
                 type="text"
                 placeholder="Jane Doe"
                 v-model="data.name"
@@ -49,7 +52,7 @@
             <div class="md:w-2/3">
               <input
                 class="bg-gray-200 appearance-none border-2 border-gray-200 rounded w-full py-2 px-4 text-gray-700 leading-tight focus:outline-none focus:bg-white focus:border-purple-500"
-                
+
                 type="email"
                 placeholder="mail@9jastreeam.com"
                 v-model="data.email"
@@ -118,42 +121,43 @@
 </template>
 
 <script>
-import axios from "axios";
-import PulseLoader from "vue-spinner/src/PulseLoader.vue";
-import ErrorAlert from "../components/ErrorAlert";
+import axios from 'axios';
+import PulseLoader from 'vue-spinner/src/PulseLoader.vue';
+import ErrorAlert from '../components/ErrorAlert';
+
 export default {
   data() {
     return {
       data: {},
       loading: false,
       error: false,
-      error_msg: "",
-      errors: {}
+      error_msg: '',
+      errors: {},
     };
   },
   components: {
     PulseLoader,
-    ErrorAlert
+    ErrorAlert,
   },
   methods: {
     register() {
       this.error = false;
-      this.error_msg = "";
-      if (this.data.name == "") {
+      this.error_msg = '';
+      if (this.data.name == '') {
         this.error = true;
-        this.error_msg = "You seem to have forgotten to enter your name";
+        this.error_msg = 'You seem to have forgotten to enter your name';
         return;
       }
 
-      if (this.data.email == "") {
+      if (this.data.email == '') {
         this.error = true;
-        this.error_msg = "Your email is a neccesity";
+        this.error_msg = 'Your email is a neccesity';
         return;
       }
 
       if (this.data.password !== this.data.password_confirmation) {
         this.error = true;
-        this.error_msg = "Passwords dont match";
+        this.error_msg = 'Passwords dont match';
         return;
       }
 
@@ -161,22 +165,22 @@ export default {
       this.loading = true;
 
       axios
-        .post("http://134.209.24.105/api/register", this.data)
+        .post('http://134.209.24.105/api/register', this.data)
         .then((response) => {
           this.loading = false;
           // we may not need to do this if check if it gets here its successful
-          localStorage.setItem("9S-User", response.data.user);
-          localStorage.setItem("9S-token", response.data.token);
-          this.$router.replace("/");
+          localStorage.setItem('9S-User', response.data.user);
+          localStorage.setItem('9S-token', response.data.token);
+          this.$router.replace('/');
         })
         .catch((error) => {
           self.loading = false;
-          this.errors = error.response.data.errors
+          this.errors = error.response.data.errors;
           console.log(this.errors);
           // console.log(error.response.data);
         });
-    }
-  }
+    },
+  },
 };
 </script>
 

@@ -53,11 +53,12 @@
 </template>
 
 <script>
-import { join } from "path";
+import { join } from 'path';
+
 export default {
   mounted() {
-    let user = localStorage.getItem("9S-User");
-    let token = localStorage.getItem("9S-token");
+    let user = localStorage.getItem('9S-User');
+    const token = localStorage.getItem('9S-token');
     user = JSON.parse(user);
 
     if (user && token) {
@@ -69,17 +70,17 @@ export default {
   data() {
     return {
       user: {},
-      token: "",
-      authenticated: false
+      token: '',
+      authenticated: false,
     };
   },
   methods: {
     logout() {
-      let user = localStorage.removeItem("9S-User");
-      let token = localStorage.removeItem("9S-token");
+      const user = localStorage.removeItem('9S-User');
+      const token = localStorage.removeItem('9S-token');
       this.authenticated = false;
-    }
-  }
+    },
+  },
 };
 </script>
 
