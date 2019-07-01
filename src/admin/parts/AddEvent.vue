@@ -4,7 +4,7 @@
     <form class="w-1/2 m-auto mt-8">
     <ErrorAlert v-if="error" :error_msg="error_msg" class="mb-4"></ErrorAlert>
     <SuccessAlert v-if="success"/>
-      <div class="md:flex md:items-center mb-6">
+      <div class="md:flex  mb-6">
         <div class="md:w-1/3">
           <label
             class="block text-gray-500 font-bold md:text-right mb-1 md:mb-0 pr-4"
@@ -22,7 +22,7 @@
           >
         </div>
       </div>
-      <div class="md:flex md:items-center mb-6">
+      <div class="md:flex  mb-6">
         <div class="md:w-1/3">
           <label
             class="block text-gray-500 font-bold md:text-right mb-1 md:mb-0 pr-4"
@@ -39,7 +39,7 @@
           >
         </div>
       </div>
-      <div class="md:flex md:items-center mb-6">
+      <div class="md:flex  mb-6">
         <div class="md:w-1/3">
           <label
             class="block text-gray-500 font-bold md:text-right mb-1 md:mb-0 pr-4"
@@ -56,7 +56,18 @@
           >
         </div>
       </div>
-      <div class="md:flex md:items-center mb-6">
+      <div class="md:flex  mb-6">
+        <div class="md:w-1/3">
+          <label
+            class="block text-gray-500 font-bold md:text-right mb-1 md:mb-0 pr-4"
+            for="inline-username"
+          >Event Date</label>
+        </div>
+        <div class="md:w-2/3">
+          <datetime class="w-6" v-model="event.date"></datetime>
+        </div>
+      </div>
+      <div class="md:flex  mb-6">
         <div class="md:w-1/3">
           <label
             class="block text-gray-500 font-bold md:text-right mb-1 md:mb-0 pr-4"
@@ -73,7 +84,7 @@
           >
         </div>
       </div>
-      <div class="md:flex md:items-center mb-6">
+      <div class="md:flex  mb-6">
         <div class="md:w-1/3">
           <label
             class="block text-gray-500 font-bold md:text-right mb-1 md:mb-0 pr-4"
@@ -81,17 +92,15 @@
           >Event Banner</label>
         </div>
         <div class="md:w-2/3">
-          <input
-            class="appearance-none w-full py-2 px-4 text-gray-700 leading-tight"
-            id
-            type="file"
-            placeholder="******************"
-            @change="onFileSelected"
-            accept="image/*"
-          >
+          <vueDropzone
+            @vdropzone-removed-file="imageRemoved"
+            @vdropzone-file-added="imageAdded"
+            id='uploader2'
+            :options="dropOptions2">
+          </vueDropzone>
         </div>
       </div>
-      <div class="md:flex md:items-center">
+      <div class="md:flex ">
         <div class="md:w-1/3"></div>
         <div class="md:w-2/3">
         <pulse-loader v-if="loading"></pulse-loader>
@@ -111,23 +120,43 @@ import PulseLoader from "vue-spinner/src/PulseLoader.vue";
 import ErrorAlert from "../../components/ErrorAlert";
 import SuccessAlert from "../../components/SuccessAlert.vue";
 import axios from "axios";
+import { Datetime } from 'vue-datetime';
+import vueDropzone from "vue2-dropzone";
+import moment from "moment";
+
 export default {
     mounted() {
-    let user = localStorage.getItem("9S-User");
-    let token = localStorage.getItem("9S-token");
-    user = JSON.parse(user);
+      let user = localStorage.getItem("9S-User");
+      let token = localStorage.getItem("9S-token");
+      user = JSON.parse(user);
 
-    if (user && token) {
-      this.authenticated = true;
-      this.user = user;
-      this.token = token;
-    }
+      if (user && token) {
+        this.authenticated = true;
+        this.user = user;
+        this.token = token;
+      }
   },
   data() {
     return {
       event: {
-        link: ""
+        link: "",
+        image: ''
       },
+      dropOptions2: {
+        acceptedFiles: "image/*",
+        url: "http://localhost:8000/api/image",
+        maxFilesize: 5, // MB
+        maxFiles: 1,
+        chunking: true,
+        preventDuplicates: true,
+        chunkSize: 500, // Bytes
+        thumbnailWidth: 150, // px
+        thumbnailHeight: 150,
+        addRemoveLinks: true,
+        autoProcessQueue:false,
+        dictDefaultMessage: `<i class='fa fa-file-image-o' style='font-size:100px; text-align: center'></i>
+      <br> Upload Display Image  <span style='color: red'>Upload</span>`
+    },
       loading: false,
       error: false,
       success: false,
@@ -140,14 +169,19 @@ export default {
   components: {
     PulseLoader,
     ErrorAlert,
-    SuccessAlert
+    SuccessAlert,
+    vueDropzone,
+    dateTime: Datetime
   },
   methods: {
-    onFileSelected(event){
-      this.event = event.target.files[0]
+    imageAdded (e) {
+        this.event.image = e;
+    },
+    imageRemoved () {
+        this.event.image = ''
     },
     addEvent() {
-            const options = {
+      const options = {
         headers: {
           "Content-Type": "multipart/form-data",
           Authorization: `Bearer ${this.token}`
@@ -157,29 +191,39 @@ export default {
       this.error = false;
       this.error_msg = "";
       this.success = false;
-      if (this.event.title == "") {
+      if (!this.event.title) {
         this.error = true;
-        this.error_msg = "You seem to have the event title";
+        this.error_msg = "You seem to have no event title";
         return;
       }
 
-      if (this.event.details == "") {
+      if (!this.event.details) {
         this.error = true;
         this.error_msg = "Kindly enter the event description";
         return;
       }
 
-      if (this.event.price == "") {
+      if (!this.event.price) {
         this.error = true;
         this.error_msg = "Kindly enter the event price";
         return;
       }
 
-      if (this.event.image == "") {
+      if (!this.event.image) {
         this.error = true;
         this.error_msg = "Kindly upload the event banner";
         return;
       }
+
+      if (!this.event.date) {
+        this.error = true;
+        this.error_msg = "Kindly set the event date";
+        return;
+      }
+
+      let dat = moment(this.event.date).format("YYYY-MM-DD");
+      console.log(dat);
+      
 
       const self = this;
       this.loading = true;
@@ -188,9 +232,11 @@ export default {
       fd.append("title", this.event.title);
       fd.append("details", this.event.details);
       fd.append("price", this.event.price);
-      fd.append("image", this.event.image);
+      if(this.event.image != '') {
+        fd.append('image', this.event.image)
+      }
+      fd.append("date", dat);
       fd.append("link", this.event.link);
-      console.log(this.event)
 
       axios
         .post("http://134.209.24.105/api/v1/events", fd, options)

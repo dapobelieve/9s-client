@@ -18,7 +18,7 @@
   import Bus from "../helpers/bus.js";
   export default {
     mounted() {
-      Bus.$emit("register.trigger", true)
+      // Bus.$emit("register.trigger", true);
     }
   };
 </script>
