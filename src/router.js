@@ -19,7 +19,7 @@ const routes = [
   {
     path: '/watch/:id',
     name: 'watch',
-    component: SingleEvent
+    component: SingleEvent,
   },
   // {
   //   path: '/test',

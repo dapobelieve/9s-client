@@ -77,61 +77,62 @@
 </template>
 
 <script>
-import axios from "axios";
-import PulseLoader from "vue-spinner/src/PulseLoader.vue";
-import ErrorAlert from "../components/ErrorAlert";
+import axios from 'axios';
+import PulseLoader from 'vue-spinner/src/PulseLoader.vue';
+import ErrorAlert from '../components/ErrorAlert';
+
 export default {
   data() {
     return {
       data: {},
       loading: false,
       error: false,
-      error_msg: ""
+      error_msg: '',
     };
   },
   components: {
     PulseLoader,
-    ErrorAlert
+    ErrorAlert,
   },
   methods: {
     getRole(token) {
       const self = this;
       const options = {
         headers: {
-          "Content-Type": "application/json",
-          Authorization: `Bearer ${token}`
-        }
+          'Content-Type': 'application/json',
+          Authorization: `Bearer ${token}`,
+        },
       };
       axios
-        .get("http://134.209.24.105/api/v1/user", options)
-        .then(function(response) {
-          if (response.status == "200" || response.status == "201") {
-            console.log(response.data.data.email)
-            let user = response.data.data;
-            console.log(user)
-            localStorage.setItem("9S-User", JSON.stringify(user));
-            self.$router.push("/");
+        .get('http://134.209.24.105/api/v1/user', options)
+        .then((response) => {
+          if (response.status == '200' || response.status == '201') {
+            console.log(response.data.data.email);
+            const user = response.data.data;
+            console.log(user);
+            localStorage.setItem('9S-User', JSON.stringify(user));
+            self.$router.push('/');
           } else {
             self.error = true;
-            self.error_msg = "An error occured";
+            self.error_msg = 'An error occured';
           }
         })
-        .catch(function(error) {
+        .catch((error) => {
           console.log(error);
         });
     },
     login() {
       this.error = false;
-      this.error_msg = "";
-      if (this.data.email == "") {
+      this.error_msg = '';
+      if (this.data.email == '') {
         this.error = true;
-        this.error_msg = "Your email is a neccesity";
+        this.error_msg = 'Your email is a neccesity';
         return;
       }
 
-      if (this.data.password == "") {
+      if (this.data.password == '') {
         this.error = true;
-        this.error_msg = "You need to fill in your password";
+        this.error_msg = 'You need to fill in your password';
         return;
       }
 
@@ -139,27 +140,27 @@ export default {
       this.loading = true;
 
       axios
-        .post("http://134.209.24.105/api/login", this.data)
-        .then(function(response) {
+        .post('http://134.209.24.105/api/login', this.data)
+        .then((response) => {
           self.loading = false;
-          if (response.status == "200" || response.status == "201") {
+          if (response.status == '200' || response.status == '201') {
             // console.log(response.data.token);
-            localStorage.setItem("9S-token", response.data.token);
+            localStorage.setItem('9S-token', response.data.token);
             self.getRole(response.data.token);
           } else {
             self.error = true;
-            self.error_msg = "An error occured";
+            self.error_msg = 'An error occured';
           }
         })
-        .catch(function(error) {
-          console.log("jjhbhb")
+        .catch((error) => {
+          console.log('jjhbhb');
           self.loading = false;
           self.error = true;
           self.error_msg = error.response.data.error;
           console.log(error);
         });
-    }
-  }
+    },
+  },
 };
 </script>
 
