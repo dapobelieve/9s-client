@@ -46,7 +46,7 @@ const routes = [
         component: AdminHome,
       },
       {
-        path: '/add-event',
+        path: 'add-event',
         name: 'add-event',
         component: AddEvent,
       },

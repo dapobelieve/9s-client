@@ -221,9 +221,7 @@ export default {
         return;
       }
 
-      let dat = moment(this.event.date).format("YYYY-MM-DD");
-      console.log(dat);
-      
+      let dat = moment(this.event.date).format("YYYY-MM-DD");  
 
       const self = this;
       this.loading = true;

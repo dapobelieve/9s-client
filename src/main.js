@@ -10,7 +10,7 @@ import Datetime from 'vue-datetime'
 import 'vue-datetime/dist/vue-datetime.css'
 
 Vue.use(SweetModal);
-Vue.use(axios);
+// Vue.use(axios);
 Vue.use(Datetime)
 
 Vue.config.productionTip = false;

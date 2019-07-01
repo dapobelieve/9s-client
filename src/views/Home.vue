@@ -3,10 +3,10 @@
     <Landing/>
     <div class="mx-4 mt-4 md:mx-16 md:mt-16 mb-4">
       <!-- mini nav area -->
-      <nav class="flex items-start border-b border-gray-400 bg-gray-300 sticky top-0 z-2 md:pt-0 pt-2 mb-4">
+      <nav class="flex md:justify-start justify-center border-b border-gray-400 bg-gray-300 sticky top-0 z-2 md:pt-0 pt-2 mb-4">
         <div class="flex justify-between -mb-px md:text-lg  text-xs">
           <a href="#" class="px-3 pb-2 text-green-500 font-semibold tracking-normal border-b-2 border-green-700">Live Events</a>
-          <a  href="#" @click.prevent="trigger(true)" class="px-3 pb-2 text-gray-500 ml-6 border-b border-gray-400 tracking-normal font-semibold hover:border-green-700 hover:text-green-500">Upcoming</a>
+          <a  href="#" class="px-3 pb-2 text-gray-500 ml-6 border-b border-gray-400 tracking-normal font-semibold hover:border-green-700 hover:text-green-500">Upcoming</a>
           <a href="#" class="px-3 pb-2 text-gray-500 border-gray-400 ml-6 border-b tracking-normal font-semibold hover:border-green-700 hover:text-green-500">Past Events</a>
         </div>
       </nav>

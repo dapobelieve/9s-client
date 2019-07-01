@@ -4,18 +4,31 @@
       <HeaderComponent class="flex-start"/>      
     </div>
     <div class="bg-white">
-      <div class=" md:w-3/5 mx-12 py-8">
-        <div class=" px-4 py-3 shadow">
-          <div class="mb-4">
-            <iframe src="//iframe.dacast.com/b/131308/f/703794" width="750" height="450" frameborder="0" scrolling="no" allow="autoplay" allowfullscreen webkitallowfullscreen mozallowfullscreen oallowfullscreen msallowfullscreen></iframe>
+      <div class="md:w-3/5 mx-2 md:mx-12 py-8">
+        <div class="mb-2 sticky top-0">
+          <div class="resp-container mb-3 shadow">
+            <!-- uncomment this to see how it looks, very reponsive -->
+            <!-- <iframe src="//iframe.dacast.com/b/131308/f/703794" width="590" height="431" frameborder="0" scrolling="no" allow="autoplay" allowfullscreen webkitallowfullscreen mozallowfullscreen oallowfullscreen msallowfullscreen></iframe> -->
+
+            <!-- this is the dynamic one thats messing up -->
+            <span class="" v-html=event.meta></span>
+            <!-- {{ event.meta }} -->
           </div>
-          <div class="flex items-center border-b border-gray-600 pb-4">
-            <img class="h-12 w-12 object-contain border border-gray-500 rounded-full" src="https://res.cloudinary.com/invitro/image/upload/v1561583860/9jastream/il9mveyuqcem3okehd4q.jpg">
-            <div class="font-bold ml-8 text-2xl">Simi London Concert</div>
+        </div>
+        <div class="flex md:border-b md:border-gray-200 pb-4">
+          <img 
+            class="h-8 w-8 md:h-12 md:w-12 object-contain border border-gray-500 rounded-full" 
+            :src=event.image>
+          <div class="ml-5">
+            <div class="font-bold text-xl mb-2">{{ event.title }}</div>
+            <p class="align-middle">
+              {{ event.details }}
+            </p>
+            
           </div>
         </div>
       </div>
-      <div class="md:w-2/5">
+      <div class="md:w-2/5 bg-green-300">
         
       </div>
     </div>
@@ -25,15 +38,57 @@
 <script>
 import Bus from '../helpers/bus.js';
 import HeaderComponent from './Header';
+import axios from  "axios";
 export default {
+  data () {
+    return {
+      event: {}
+    }
+  },
   components: {
     HeaderComponent
   },
-  mounted() {
-    // Bus.$emit('register.trigger', true);
-  },
+  // mounted() {
+  //   // Bus.$emit('register.trigger', true);
+  // },
+  created() {
+    let user = localStorage.getItem("9S-User");
+    let token = localStorage.getItem("9S-token");
+    user = JSON.parse(user);
+
+    if (user && token) {
+      this.authenticated = true;
+      this.user = user;
+      this.token = token;
+    }
+    axios.get(`http://134.209.24.105/api/v1/events/${this.$route.params.id}`, {
+      headers: {
+        Authorization: `Bearer ${token}`
+      }
+    })
+    .then((response) => {
+      this.event = response.data.data
+      // console.log(response.data)
+    })
+    .catch((error) => {
+      console.log(error.respose.data)
+    })
+  }
 };
 </script>
 
 <style scoped>
+.resp-container {
+  position: relative;
+  overflow: hidden;
+  padding-top:56.25%;
+}
+iframe {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    border: 0;
+}
 </style>

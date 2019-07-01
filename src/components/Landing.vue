@@ -4,7 +4,7 @@
     style="background: linear-gradient(89.81deg, #111111 0.05%, rgba(17, 17, 17, 0.65) 41.25%), url('https://res.cloudinary.com/dldd8ucby/image/upload/v1561318349/Bitmap.png') no-repeat center center;"
   >
     <HeaderComponent class="flex-start"/>
-    <div class="lower-content p-16">
+    <div class="lower-content p-6 md:p-16">
       <p class="uppercase text-4xl text-white font-bold">ADEKUfffNLE GOLD LIVE IN CONCERT</p>
       <p class="text-xl opacity-75 text-white font-semibold">22nd August 2019 | 1400hrs</p>
       <div class>
