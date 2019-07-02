@@ -1,14 +1,14 @@
 <template>
-  <div class="bg-white">
-    <div class="bg-gray-200 -my-4 mb-1">
+  <div class="">
+    <div class="bg-green-600">
       <HeaderComponent class="flex-start"/>      
     </div>
     <div class="bg-white">
       <div class="md:w-3/5 mx-2 md:mx-12 py-8">
         <div class="mb-2 sticky top-0">
-          <div class="resp-container mb-3 shadow">
+          <div class="resp-container mb-3 w-full shadow">
             <!-- uncomment this to see how it looks, very reponsive -->
-            <!-- <iframe src="//iframe.dacast.com/b/131308/f/703794" width="590" height="431" frameborder="0" scrolling="no" allow="autoplay" allowfullscreen webkitallowfullscreen mozallowfullscreen oallowfullscreen msallowfullscreen></iframe> -->
+            <iframe src="//iframe.dacast.com/b/131308/f/703794" width="590" height="431" frameborder="0" scrolling="no" allow="autoplay" allowfullscreen webkitallowfullscreen mozallowfullscreen oallowfullscreen msallowfullscreen></iframe>
 
             <!-- this is the dynamic one thats messing up -->
             <span class="" v-html=event.meta></span>
