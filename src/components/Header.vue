@@ -37,7 +37,7 @@
           <button
             class="text-white font-bold block md:inline py-2 px-4 mx-2 focus:outline-none rounded"
           >Welcome {{user.name}}</button>
-          <router-link to="admin" v-if="user.roles">
+          <router-link to="/admin" v-if="user.roles">
             <button
               class="bg-green-500 text-white font-bold py-2 px-4 mx-2 focus:outline-none rounded"
             >Admin Portal</button>

@@ -6,9 +6,9 @@
     <div class="bg-white">
       <div class="md:w-3/5 mx-2 md:mx-12 py-8">
         <div class="mb-2 sticky top-0">
-          <div class="resp-container mb-3 shadow">
+          <div class="iframe-container">
             <!-- uncomment this to see how it looks, very reponsive -->
-            <iframe :src=src width="590" height="431" frameborder="0" scrolling="no" allow="autoplay" allowfullscreen webkitallowfullscreen mozallowfullscreen oallowfullscreen msallowfullscreen></iframe>            
+            <iframe style="position:absolute; top:0; left: 0" :src=src width="100%" height="100%" frameborder="0" scrolling="no" allow="autoplay" allowfullscreen webkitallowfullscreen mozallowfullscreen oallowfullscreen msallowfullscreen></iframe>            
           </div>
         </div>
         <div class="flex md:border-b md:border-gray-200 pb-4">
@@ -85,22 +85,20 @@ export default {
   overflow: hidden;
   padding-top:56.25%;
 }
-/* iframe {
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    border: 0;
-} */
 
-.vue-friendly-iframe {
-  width : 800px;
-  height: 1000px;
-} 
 
-iframe{
-  height:600px;
-  width: 100vh;
+.iframe-container {
+  overflow: hidden;
+  padding-top: 56.25%;
+  position: relative;
+}
+ 
+.iframe-container iframe {
+   border: 0;
+   height: 100%;
+   left: 0;
+   position: absolute;
+   top: 0;
+   width: 100%;
 }
 </style>
