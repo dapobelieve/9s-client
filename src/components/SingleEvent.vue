@@ -8,11 +8,7 @@
         <div class="mb-2 sticky top-0">
           <div class="resp-container mb-3 shadow">
             <!-- uncomment this to see how it looks, very reponsive -->
-            <!-- <iframe src="//iframe.dacast.com/b/131308/f/703794" width="590" height="431" frameborder="0" scrolling="no" allow="autoplay" allowfullscreen webkitallowfullscreen mozallowfullscreen oallowfullscreen msallowfullscreen></iframe> -->
-
-            <!-- this is the dynamic one thats messing up -->
-            <span class="" v-html=event.meta></span>
-            <!-- {{ event.meta }} -->
+            <iframe :src=src width="590" height="431" frameborder="0" scrolling="no" allow="autoplay" allowfullscreen webkitallowfullscreen mozallowfullscreen oallowfullscreen msallowfullscreen></iframe>            
           </div>
         </div>
         <div class="flex md:border-b md:border-gray-200 pb-4">
@@ -42,7 +38,8 @@ import axios from  "axios";
 export default {
   data () {
     return {
-      event: {}
+      event: {},
+      src: null
     }
   },
   components: {
@@ -68,7 +65,10 @@ export default {
     })
     .then((response) => {
       this.event = response.data.data
-      // console.log(response.data)
+      let src = this.event.meta;
+      this.src = src.slice(src.indexOf("//"), src.indexOf('width'));
+      this.src = this.src.slice(0, -2)
+      // console.log(src)
     })
     .catch((error) => {
       console.log(error.respose.data)
