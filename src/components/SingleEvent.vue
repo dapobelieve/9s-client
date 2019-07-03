@@ -3,35 +3,11 @@
     <div class="bg-green-600">
       <HeaderComponent class="flex-start"/>      
     </div>
-    <div class="bg-white">
-      <div class="md:w-3/5 mx-2 md:mx-12 py-8">
-        <div class="mb-2 sticky top-0">
-          <div class="resp-container mb-3 w-full shadow">
-            <!-- uncomment this to see how it looks, very reponsive -->
-            <iframe src="//iframe.dacast.com/b/131308/f/703794" width="590" height="431" frameborder="0" scrolling="no" allow="autoplay" allowfullscreen webkitallowfullscreen mozallowfullscreen oallowfullscreen msallowfullscreen></iframe>
+    <!-- <vue-friendly-iframe src='https://www.youtube.com/watch?v=Kkghev-P1bQ'></vue-friendly-iframe> -->
+    <iframe src="https://www.youtube.com/watch?v=t2ByLmLnYJ8&t=4s" width="100vw"></iframe>
 
-            <!-- this is the dynamic one thats messing up -->
-            <span class="" v-html=event.meta></span>
-            <!-- {{ event.meta }} -->
-          </div>
-        </div>
-        <div class="flex md:border-b md:border-gray-200 pb-4">
-          <img 
-            class="h-8 w-8 md:h-12 md:w-12 object-contain border border-gray-500 rounded-full" 
-            :src=event.image>
-          <div class="ml-5">
-            <div class="font-bold text-xl mb-2">{{ event.title }}</div>
-            <p class="align-middle">
-              {{ event.details }}
-            </p>
-            
-          </div>
-        </div>
-      </div>
-      <div class="md:w-2/5 bg-green-300">
-        
-      </div>
-    </div>
+
+
     
   </div>
 </template>
@@ -68,6 +44,7 @@ export default {
     })
     .then((response) => {
       this.event = response.data.data
+      console.log(this.event)
       // console.log(response.data)
     })
     .catch((error) => {
@@ -77,18 +54,31 @@ export default {
 };
 </script>
 
+
+
+
 <style scoped>
 .resp-container {
   position: relative;
   overflow: hidden;
   padding-top:56.25%;
 }
-iframe {
+/* iframe {
     position: absolute;
     top: 0;
     left: 0;
     width: 100%;
     height: 100%;
     border: 0;
+} */
+
+.vue-friendly-iframe {
+  width : 800px;
+  height: 1000px;
+} 
+
+iframe{
+  height:600px;
+  width: 100vh;
 }
 </style>
