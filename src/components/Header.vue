@@ -22,12 +22,12 @@
       <div class="w-full block flex-grow md:flex md:items-center md:w-auto">
         <div class="text-sm md:flex-grow"></div>
         <div v-if="!authenticated">
-          <router-link to="login">
+          <router-link to="/login">
             <button
               class="bg-green-500 text-white font-bold py-2 px-4 mx-2 focus:outline-none rounded"
             >Login</button>
           </router-link>
-          <router-link to="register">
+          <router-link to="/register">
             <button
               class="bg-transparent-500 py-2 px-4 text-white border mx-2 hover:bg-white hover:text-green-500 border-solid border-white-800 font-bold py-2 px-4 rounded"
             >Register</button>
