@@ -12,9 +12,9 @@
       </div>
 
       <div class="m-2 p-2">
-        <button
+        <router-link :to="{name: 'edit-event', params: {id: event.id}}"
           class="text-white bg-green-500 font-bold block md:inline py-2 px-4 mx-2 focus:outline-none rounded"
-        >Edit Event</button>
+        >Edit Event</router-link>
         <button
           @click="$refs.modal.open()"
           class="bg-red-500 text-white font-bold py-2 px-4 mx-2 focus:outline-none rounded"
@@ -50,7 +50,7 @@ export default {
     };
   },
   mounted() {
-    console.log(this.event);
+    // console.log(this.event);
   },
   methods: {
     deleteEvent() {

@@ -84,6 +84,19 @@
           />
         </div>
       </div>
+      <div v-if="event.image" class="md:flex mb-6">
+        <div class="md:w-1/3">
+          <label
+            class="block text-gray-500 font-bold md:text-right mb-1 md:mb-0 pr-4"
+            for="inline-username"
+          >Current Banner</label>
+        </div>
+        <div class="md:w-2/3">
+          <span>
+            <img :src=event.image>
+          </span>
+        </div>
+      </div>
       <div class="md:flex mb-6">
         <div class="md:w-1/3">
           <label
@@ -178,10 +191,10 @@ export default {
   },
   methods: {
     imageAdded(e) {
-      this.event.image = e;
+      this.event.newImage = e;
     },
     imageRemoved() {
-      this.event.image = "";
+      this.event.newImage = "";
     },
     addEvent() {
       const options = {
@@ -272,7 +285,7 @@ export default {
         .get(`http://134.209.24.105/api/v1/events/${id}`, options)
         .then(response => {
           self.loading2 = false;
-          console.log(response);
+          // console.log(response.data.data);
           self.event = response.data.data;
         })
         .catch(error => {
@@ -283,9 +296,8 @@ export default {
           console.log(error);
         });
     },
-      editEvent() {
-      console.log("n")
-    const options = {
+    editEvent() {
+      const options = {
       headers: {
         "Content-Type": "multipart/form-data",
         Authorization: `Bearer ${this.token}`
@@ -327,7 +339,6 @@ export default {
     }
 
     let dat = moment(this.event.date).format("YYYY-MM-DD");
-    console.log(dat);
 
     const self = this;
     this.loading = true;
@@ -336,14 +347,16 @@ export default {
     fd.append("title", this.event.title);
     fd.append("details", this.event.details);
     fd.append("price", this.event.price);
-    if (this.event.image != "") {
-      fd.append("image", this.event.image);
+    if (this.event.newImage) {
+      fd.append("image", this.event.newImage);
     }
     fd.append("date", dat);
     fd.append("link", this.event.link);
+    fd.append("_method", 'PUT');
 
-    axios
-      .put("http://134.209.24.105/api/v1/events", fd, options)
+    console.log(fd)
+
+    axios.post(`http://134.209.24.105/api/v1/events/${this.event.id}`, fd, options)
       .then(response => {
         self.loading = false;
         self.success = true;

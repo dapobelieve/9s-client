@@ -2,7 +2,7 @@
   <div class="flex w-full pt-2 content-center justify-between md:w-1/3 md:justify-end">
           <ul class="list-reset flex justify-between flex-1 md:flex-none items-center">
             <li class="flex-1 md:flex-none md:mr-3">
-              <a class="inline-block py-2 px-4 text-white no-underline" href="#">Active</a>
+              <a class="inline-block py-2 px-4 text-white no-underline" href="#"></a>
             </li>
             <li class="flex-1 md:flex-none md:mr-3">
               <a class="inline-block text-gray-600 no-underline hover:text-gray-200 hover:text-underline py-2 px-4" href="#">link</a>

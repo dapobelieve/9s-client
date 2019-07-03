@@ -16,7 +16,6 @@
         <SideBar/>
         <div class="main-content flex-1 bg-gray-100 mt-12 mx-auto md:mt-2 pb-24 md:pb-5">
             <router-view></router-view>
-
         </div>
     </div>
   </div>
