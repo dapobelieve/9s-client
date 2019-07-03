@@ -9,6 +9,9 @@ import 'vue2-dropzone/dist/vue2Dropzone.min.css';
 import Datetime from 'vue-datetime'
 import 'vue-datetime/dist/vue-datetime.css'
 
+import VueFriendlyIframe from 'vue-friendly-iframe';
+
+Vue.component('vue-friendly-iframe', VueFriendlyIframe);
 Vue.use(SweetModal);
 // Vue.use(axios);
 Vue.use(Datetime)

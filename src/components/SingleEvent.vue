@@ -1,6 +1,6 @@
 <template>
-  <div class="bg-white">
-    <div class="bg-gray-200 -my-4 mb-1">
+  <div class="">
+    <div class="bg-green-600">
       <HeaderComponent class="flex-start"/>      
     </div>
     <div class="bg-white">
@@ -76,18 +76,31 @@ export default {
 };
 </script>
 
+
+
+
 <style scoped>
 .resp-container {
   position: relative;
   overflow: hidden;
   padding-top:56.25%;
 }
-iframe {
+/* iframe {
     position: absolute;
     top: 0;
     left: 0;
     width: 100%;
     height: 100%;
     border: 0;
+} */
+
+.vue-friendly-iframe {
+  width : 800px;
+  height: 1000px;
+} 
+
+iframe{
+  height:600px;
+  width: 100vh;
 }
 </style>

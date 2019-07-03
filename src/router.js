@@ -4,7 +4,8 @@ import Home from './views/Home.vue';
 import Login from './views/Login.vue';
 import Register from './views/Register.vue';
 import SingleEvent from './components/SingleEvent.vue';
-import AddEvent from './admin/parts/AddEvent';
+import AddEvent from './admin/parts/AddEvent.vue';
+import EditEvent from './admin/parts/EditEvent.vue';
 // import Test from './components/Test.vue';
 import { AdminIndex, AdminHome } from './admin';
 
@@ -49,6 +50,11 @@ const routes = [
         path: 'add-event',
         name: 'add-event',
         component: AddEvent,
+      },
+      {
+        path: 'edit-event/:id',
+        name: 'edit-event',
+        component: EditEvent,
       },
       // add other admin routes here
     ],
