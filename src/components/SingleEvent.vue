@@ -68,7 +68,6 @@ export default {
       let src = this.event.meta;
       this.src = src.slice(src.indexOf("//"), src.indexOf('width'));
       this.src = this.src.slice(0, -2)
-      // console.log(src)
     })
     .catch((error) => {
       console.log(error.respose.data)
