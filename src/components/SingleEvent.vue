@@ -87,10 +87,6 @@ export default {
   padding-top:56.25%;
 }
 
-.vue-friendly-iframe {
-  width : 800px;
-  height: 1000px;
-} 
 
 .iframe-container {
   overflow: hidden;
