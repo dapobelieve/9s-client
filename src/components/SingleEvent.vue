@@ -3,11 +3,31 @@
     <div class="bg-green-600">
       <HeaderComponent class="flex-start"/>      
     </div>
-    <!-- <vue-friendly-iframe src='https://www.youtube.com/watch?v=Kkghev-P1bQ'></vue-friendly-iframe> -->
-    <iframe src="https://www.youtube.com/watch?v=t2ByLmLnYJ8&t=4s" width="100vw"></iframe>
-
-
-
+    <div class="bg-white">
+      <div class="md:w-3/5 mx-2 md:mx-12 py-8">
+        <div class="mb-2 sticky top-0">
+          <div class="resp-container mb-3 shadow">
+            <!-- uncomment this to see how it looks, very reponsive -->
+            <iframe :src=src width="590" height="431" frameborder="0" scrolling="no" allow="autoplay" allowfullscreen webkitallowfullscreen mozallowfullscreen oallowfullscreen msallowfullscreen></iframe>            
+          </div>
+        </div>
+        <div class="flex md:border-b md:border-gray-200 pb-4">
+          <img 
+            class="h-8 w-8 md:h-12 md:w-12 object-contain border border-gray-500 rounded-full" 
+            :src=event.image>
+          <div class="ml-5">
+            <div class="font-bold text-xl mb-2">{{ event.title }}</div>
+            <p class="align-middle">
+              {{ event.details }}
+            </p>
+            
+          </div>
+        </div>
+      </div>
+      <div class="md:w-2/5 bg-green-300">
+        
+      </div>
+    </div>
     
   </div>
 </template>
@@ -18,7 +38,8 @@ import axios from  "axios";
 export default {
   data () {
     return {
-      event: {}
+      event: {},
+      src: null
     }
   },
   components: {
@@ -44,8 +65,10 @@ export default {
     })
     .then((response) => {
       this.event = response.data.data
-      console.log(this.event)
-      // console.log(response.data)
+      let src = this.event.meta;
+      this.src = src.slice(src.indexOf("//"), src.indexOf('width'));
+      this.src = this.src.slice(0, -2)
+      // console.log(src)
     })
     .catch((error) => {
       console.log(error.respose.data)
