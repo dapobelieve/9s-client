@@ -4,8 +4,7 @@
       <div class="flex items-center flex-shrink-0 text-white mr-6">
         <router-link to="/">
           <div class="uppercase text-3xl items-center">
-            <span class="font-thin tracking-tighter">9JA</span>
-            <span class="font-black tracking-tighter">STREAM</span>
+            <img src="https://res.cloudinary.com/invitro/image/upload/v1562204383/9jastream/9slogo.png">
           </div>
         </router-link>
       </div>

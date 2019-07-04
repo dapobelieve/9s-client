@@ -1,10 +1,9 @@
 <template>
   <div class="bg-white">
     <div class="mx-16 py-8">
-      <div class="text-center md:flex justify-between border-b border-gray-300 pb-2">
-        <div class="uppercase text-3xl items-center">
-          <span class="font-thin tracking-tighter">9JA</span>
-          <span class="font-black tracking-tighter">STREAM</span>
+      <div class="justify-center md:flex md:justify-between border-b border-gray-300 pb-2">
+        <div class="flex justify-center">
+          <img class="self-center h-6" src="https://res.cloudinary.com/invitro/image/upload/v1562204383/9jastream/9slogo.png">
         </div>
         <div class="flex text-center justify-between">
           <div class="cursor-pointer ml-6">About</div>

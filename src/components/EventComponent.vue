@@ -9,7 +9,7 @@
           <span class="font-bold text-black flex text-xl justify-start ml-4">{{event.title}}</span>
           <p
             class="flex justify-start ml-4 font-bold text-sm text-gray-600 tracking-wide"
-          >{{event.date }} | 1700hrs</p>
+          >{{event.date }} </p>
         </div>
       </div>
     </router-link>
