@@ -22,22 +22,20 @@
       <div class="w-full block flex-grow md:flex md:items-center md:w-auto">
         <div class="text-sm md:flex-grow"></div>
         <div v-if="!authenticated">
-          <router-link to="login">
-            <button
+            <router-link to="login"
               class="bg-green-500 text-white font-bold py-2 px-4 mx-2 focus:outline-none rounded"
-            >Login</button>
+            >Login
           </router-link>
-          <router-link to="register">
-            <button
+            <router-link to="register"
               class="bg-transparent-500 py-2 px-4 text-white border mx-2 hover:bg-white hover:text-green-500 border-solid border-white-800 font-bold py-2 px-4 rounded"
-            >Register</button>
+            >Register
           </router-link>
         </div>
         <div v-if="authenticated">
           <button
             class="text-white font-bold block md:inline py-2 px-4 mx-2 focus:outline-none rounded"
           >Welcome {{user.name}}</button>
-          <router-link to="/admin" v-if="user.roles">
+          <router-link :to="{name: 'admin-home'}" v-if="user.roles">
             <button
               class="bg-green-500 text-white font-bold py-2 px-4 mx-2 focus:outline-none rounded"
             >Admin Portal</button>

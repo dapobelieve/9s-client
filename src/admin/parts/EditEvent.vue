@@ -34,7 +34,7 @@
             class="bg-gray-200 appearance-none border-2 border-gray-200 rounded w-full py-2 px-4 text-gray-700 leading-tight focus:outline-none focus:bg-white focus:border-purple-500"
             id="inline-username"
             type="text"
-            placeholder="A match between two great teams"
+            placeholder="Enter the iframe embed code from dacast here"
             v-model="event.details"
           />
         </div>
@@ -354,8 +354,6 @@ export default {
     fd.append("link", this.event.link);
     fd.append("_method", 'PUT');
 
-    console.log(fd)
-
     axios.post(`http://134.209.24.105/api/v1/events/${this.event.id}`, fd, options)
       .then(response => {
         self.loading = false;
@@ -364,6 +362,9 @@ export default {
         self.event = {
           link: ""
         };
+        self.$router.push({
+          name: 'admin-home'
+        })
       })
       .catch(error => {
         self.loading = false;

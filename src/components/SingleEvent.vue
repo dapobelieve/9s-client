@@ -53,11 +53,16 @@ export default {
     let token = localStorage.getItem("9S-token");
     user = JSON.parse(user);
 
-    if (user && token) {
-      this.authenticated = true;
-      this.user = user;
-      this.token = token;
+    if (!user && !token) {
+      this.$router.push({
+        name: 'login'
+      });
+      return;
     }
+
+    this.authenticated = true;
+    this.user = user;
+    this.token = token;
     axios.get(`http://134.209.24.105/api/v1/events/${this.$route.params.id}`, {
       headers: {
         Authorization: `Bearer ${token}`
