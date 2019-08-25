@@ -104,7 +104,7 @@ export default {
         },
       };
       axios
-        .get('http://134.209.24.105/api/v1/user', options)
+        .get('http://167.71.139.209/api/v1/user', options)
         .then((response) => {
           if (response.status == '200' || response.status == '201') {
             console.log(response.data.data.email);
@@ -140,7 +140,7 @@ export default {
       this.loading = true;
 
       axios
-        .post('http://134.209.24.105/api/login', this.data)
+        .post('http://167.71.139.209/api/login', this.data)
         .then((response) => {
           self.loading = false;
           if (response.status == '200' || response.status == '201') {

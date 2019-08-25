@@ -44,7 +44,7 @@ export default {
   },
   mounted() {
     const self = this;
-    axios.get('http://134.209.24.105/api/v1/events')
+    axios.get('http://167.71.139.209/api/v1/events')
       .then((response) => {
         self.loading = false;
         if (response.status == '200' || response.status == '201') {

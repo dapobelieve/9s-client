@@ -58,7 +58,7 @@ export default {
         self.loading = true;
         self.error = false;
       axios
-        .delete(`http://134.209.24.105/api/v1/events`,  { params: { id: event.id } })
+        .delete(`http://167.71.139.209/api/v1/events`,  { params: { id: event.id } })
         .then(response => {
           self.loading = false;
           console.log(response)

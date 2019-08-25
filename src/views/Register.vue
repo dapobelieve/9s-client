@@ -165,7 +165,7 @@ export default {
       this.loading = true;
 
       axios
-        .post('http://134.209.24.105/api/register', this.data)
+        .post('http://167.71.139.209/api/register', this.data)
         .then((response) => {
           this.loading = false;
           // we may not need to do this if check if it gets here its successful

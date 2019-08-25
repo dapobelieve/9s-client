@@ -255,7 +255,7 @@ export default {
       fd.append("link", this.event.link);
 
       axios
-        .post("http://134.209.24.105/api/v1/events", fd, options)
+        .post("http://167.71.139.209/api/v1/events", fd, options)
         .then(response => {
           self.loading = false;
           self.success = true;
@@ -282,7 +282,7 @@ export default {
       };
       let id = this.$route.params.id;
       axios
-        .get(`http://134.209.24.105/api/v1/events/${id}`, options)
+        .get(`http://167.71.139.209/api/v1/events/${id}`, options)
         .then(response => {
           self.loading2 = false;
           // console.log(response.data.data);
@@ -354,7 +354,7 @@ export default {
     fd.append("link", this.event.link);
     fd.append("_method", 'PUT');
 
-    axios.post(`http://134.209.24.105/api/v1/events/${this.event.id}`, fd, options)
+    axios.post(`http://167.71.139.209/api/v1/events/${this.event.id}`, fd, options)
       .then(response => {
         self.loading = false;
         self.success = true;

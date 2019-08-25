@@ -63,7 +63,7 @@ export default {
     this.authenticated = true;
     this.user = user;
     this.token = token;
-    axios.get(`http://134.209.24.105/api/v1/events/${this.$route.params.id}`, {
+    axios.get(`http://167.71.139.209/api/v1/events/${this.$route.params.id}`, {
       headers: {
         Authorization: `Bearer ${token}`
       }

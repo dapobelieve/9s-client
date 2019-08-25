@@ -240,7 +240,7 @@ export default {
       fd.append("link", this.event.link);
 
       axios
-        .post("http://134.209.24.105/api/v1/events", fd, options)
+        .post("http://167.71.139.209/api/v1/events", fd, options)
         .then(response => {
           self.loading = false;
           self.success = true;
